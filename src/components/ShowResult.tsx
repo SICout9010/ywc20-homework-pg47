@@ -81,7 +81,7 @@ function ShowResult() {
             <div className="flex flex-col items-center justify-center h-full w-full p-8 text-center">
               <h1 className="mt-10 text-4xl font-bold mb-4">
                 Congrats! 🎉🥳
-                <p className="text-sm text-gray-500">
+                <p className="mt-2 text-sm text-gray-500">
                   ขอแสดงความยินดีด้วย
                 </p>
               </h1>

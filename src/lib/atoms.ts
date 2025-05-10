@@ -22,6 +22,16 @@ export const filteredResultsAtom = atom((get) => {
         return candidate.lastName.toLowerCase().includes(search.toLowerCase()) ||
         candidate.firstName.toLowerCase().includes(search.toLowerCase()) ||
         candidate.interviewRefNo.toLowerCase().includes(search.toLowerCase())
+    }).map((candidate: Candidate) => {
+        return {
+            ...candidate,
+            major: {
+                design: "Design",
+                programming: "Programming",
+                marketing: "Marketing",
+                content: "Content"
+            }[major]
+        }
     })[0]
 })
 
