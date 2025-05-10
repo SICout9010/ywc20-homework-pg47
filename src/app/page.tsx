@@ -1,5 +1,3 @@
-'use client'
-
 import Image from "next/image";
 import { GridPattern } from "@/components/magicui/grid-pattern";
 import ShowResult from "@/components/ShowResult";
@@ -10,25 +8,20 @@ import { candidatesAtom } from "@/lib/atoms";
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
-export default function Home() {
+export default async function Home() {
 
-  const [, setCandidates] = useAtom(candidatesAtom);
+  const fetchCandidates = async () => {
+    'use cache'
+    console.log("Fetching candidates from YWC20 server...");
+    const res = await fetch('https://api.ywc20.ywc.in.th/homework/candidates', {
+      headers: {
+        'x-reference-id': 'PG47'
+      }
+    });
 
-  useEffect(() => {
-    const fetchCandidates = async () => {
-      console.log("Fetching candidates from YWC20 server...");
-      const res = await fetch('https://api.ywc20.ywc.in.th/homework/candidates', {
-        headers: {
-          'x-reference-id': 'PG47'
-        }
-      });
-
-      const data = await res.json();
-      setCandidates(data);
-    }
-
-    fetchCandidates();
-  }, [setCandidates]);
+    const data = await res.json();
+    return data;
+  }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-inter)]">
@@ -43,7 +36,7 @@ export default function Home() {
         )}
       />
       <main className="w-full flex flex-col gap-[32px] row-start-2 items-center justify-center sm:items-start">
-        <SearchDialog />
+        <SearchDialog candidatesProp={await fetchCandidates()} />
         <ShowResult />
       </main>
       <Footer />

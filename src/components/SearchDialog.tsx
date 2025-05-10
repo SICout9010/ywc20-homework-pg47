@@ -1,18 +1,10 @@
 'use client'
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
-import { Button } from "./ui/button"
 import { Search } from "lucide-react"
 import { useAtom } from "jotai"
 import { candidatesAtom, searchAtom, selectedMajorAtom } from "@/lib/atoms"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
+import { CandidatesByMajor } from "@/lib/interfaces"
 
 const majors = [
     { display: "💻 Programming", value: "programming" },
@@ -21,10 +13,15 @@ const majors = [
     { display: "📝 Content", value: "content" }
 ] as const;
 
-export default function SearchDialog() {
+export default function SearchDialog({ candidatesProp }: { candidatesProp: CandidatesByMajor }) {
     const [selectedMajor, setSelectedMajor] = useAtom(selectedMajorAtom);
     const [search, setSearch] = useAtom(searchAtom);
     const [localSearch, setLocalSearch] = useState<string>("");
+    const [, setCandidates] = useAtom(candidatesAtom);
+
+    useEffect(() => {
+        setCandidates(candidatesProp);
+    }, [candidatesProp]);
 
     return (
         <div className="flex items-center justify-center w-full flex-col gap-3">

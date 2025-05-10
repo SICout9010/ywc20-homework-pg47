@@ -1,15 +1,5 @@
 import { atom } from "jotai";
-
-// got this from api.ywc20
-export interface Candidate {
-    firstName: string;
-    lastName: string;
-    interviewRefNo: string;
-    major: string;
-}
-
-export type Major = 'design' | 'programming' | 'marketing' | 'content';
-export type CandidatesByMajor = Record<Major, Candidate[]>;
+import { Candidate, CandidatesByMajor, Major } from "./interfaces";
 
 export const selectedMajorAtom = atom<Major>('design');
 export const searchAtom = atom("");
