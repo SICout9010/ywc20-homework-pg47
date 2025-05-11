@@ -24,7 +24,7 @@ export default async function Home() {
   }
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-inter)] bg-gradient-to-b from-[#500600] to-[#1A0200]">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-inter)]">
       <Image src="/ywc20.svg" alt="YWC20" width={250} height={250} />
       <GridPattern
         x={-1}

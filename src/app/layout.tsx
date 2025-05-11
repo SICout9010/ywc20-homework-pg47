@@ -10,13 +10,23 @@ const inter = Inter({
 
 const ibmPlexSansThai = IBM_Plex_Sans_Thai({
   variable: "--font-ibm-plex-sans-thai",
-  subsets: ["latin"],
+  subsets: ["thai"],
   weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ywc20.mrphuripat.me"),
   title: "YWC20 - PG47 HOMEWORK",
   description: "YWC20 - PG47 HOMEWORK",
+  openGraph: {
+    title: "YWC20 - PG47 HOMEWORK",
+    description: "@2025 TWA.",
+    images: [
+      {
+        url: "/og-image2.png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
